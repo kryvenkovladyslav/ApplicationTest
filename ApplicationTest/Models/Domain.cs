@@ -4,12 +4,22 @@ namespace ApplicationTest.Models
 {
     public static class Domain
     {
-        public static Dictionary<int, string> Dictionary = new Dictionary<int, string>();
+        public static Dictionary<int, string> CategoryTranslater = new Dictionary<int, string>();
+        public static Dictionary<string, string> AnswerTranslater = new Dictionary<string, string>();
+
         static Domain()
         {
-            Dictionary.Add(0, "Математика");
-            Dictionary.Add(1, "Фізика");
+            CategoryTranslater.Add(0, "Математика");
+            CategoryTranslater.Add(1, "Фізика");
+
+            AnswerTranslater.Add("A", "A");
+            AnswerTranslater.Add("B", "Б");
+            AnswerTranslater.Add("C", "В");
+            AnswerTranslater.Add("G", "Г");
+            AnswerTranslater.Add("D", "Д");
+
         }
+
         public enum Answers : int
         {
             A, B, C, G, D

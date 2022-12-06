@@ -29,8 +29,8 @@
             <div id="@id" class="form-group">
                 <h2>@question.Text</h2>
                 <img src="~/images/@question.ImagePath" class="form-control-file" />
-                <p class="form-control-plaintext font-weight-bold">Очікувана відповідь: @question.ExpectedAnswer</p>
-                <p class="form-control-plaintext font-weight-bold">Надана відповідь: @question.ActualAnswer</p>
+                <p class="@GetColor(question) form-control-plaintext font-weight-bold">Очікувана відповідь: @Domain.AnswerTranslater[question.ExpectedAnswer.ToString()]</p>
+                <p class="@GetColor(question) form-control-plaintext font-weight-bold">Надана відповідь: @Domain.AnswerTranslater[question.ActualAnswer.ToString()]</p>
             </div>
             id++;
         }

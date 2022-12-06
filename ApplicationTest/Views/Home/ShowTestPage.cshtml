@@ -43,10 +43,13 @@
                         <input type="radio" asp-for="Questions[index].ActualAnswer" value="@Domain.Answers.G" class="form-control" />
                     </div>
 
-                    <div class="form-group m-3">
-                        <label asp-for="Questions[index].ActualAnswer">Д</label>
-                        <input type="radio" asp-for="Questions[index].ActualAnswer" value="@Domain.Answers.D" class="form-control" />
-                    </div>
+                    @if (!Model.Category.Equals(Domain.Categories.physics))
+                    {
+                        <div class="form-group m-3">
+                            <label asp-for="Questions[index].ActualAnswer">Д</label>
+                            <input type="radio" asp-for="Questions[index].ActualAnswer" value="@Domain.Answers.D" class="form-control" />
+                        </div>
+                    }
                 </div>
             </div>
             index++;
