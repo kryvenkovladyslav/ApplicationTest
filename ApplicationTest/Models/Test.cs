@@ -7,13 +7,13 @@ namespace ApplicationTest.Models
 {
     public class Test
     {
-        public string Category { get; set; }
+        public Domain.Categories Category { get; set; }
+        public List<Question> Questions { get; set; }
         public string Name { get; set; }
         public int Count { get; set; }
-        public List<Question> Questions { get; set; }
-        public double Score { get; set; }
-        public double GetScore()
+        public double Score 
             => Questions.Where(question => question.Result).Count() * 10;
-        
+
+
     }
 }

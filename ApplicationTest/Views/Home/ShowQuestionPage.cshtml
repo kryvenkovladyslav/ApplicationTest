@@ -1,0 +1,9 @@
+﻿@model Question
+<div>
+    <div class="form-group">
+        <h2>@Model.Text</h2>
+        <img src="~/images/@Model.ImagePath" class="form-control-file" />
+        <p class="form-control-plaintext">Очікувана відповідь: @Model.ExpectedAnswer</p>
+        <p class="form-control-plaintext">Надана відповідь: @Model.ActualAnswer</p>
+    </div>
+</div>

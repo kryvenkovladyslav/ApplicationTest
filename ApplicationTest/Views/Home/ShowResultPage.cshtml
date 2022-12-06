@@ -1,6 +1,41 @@
 ﻿@model Test
-<div>
-    <p>Результати</p>
-    <p>Ви завершиили тестування.</p>
-    <p>Ви набрали: @Model.GetScore() балів</p>
+@{ 
+    int index = 0;
+    int id = 0;
+    string GetColor(Question question)
+    {
+        return question.Result ? "btn-success" : "btn-danger";
+    }
+}
+<div class="bg-light m-3">
+    <div>
+        <h1>Результати</h1>
+        <p>Ви завершиили тестування.</p>
+        <p>Ви набрали: @Model.Score балів</p>
+    </div>
+
+    <div>
+        @foreach (var question in Model.Questions)
+        {
+            <a href="#@index" class="@GetColor(question) btn btn-sm m-2">@(index + 1)</a>
+            index++;
+        }
+    </div>
+  
+
+    <div class="m-3">
+        @foreach (var question in Model.Questions)
+        {
+            <hr class="font-weight-bold" />
+            <div id="@id" class="form-group">
+                <h2>@question.Text</h2>
+                <img src="~/images/@question.ImagePath" class="form-control-file" />
+                <p class="form-control-plaintext font-weight-bold">Очікувана відповідь: @question.ExpectedAnswer</p>
+                <p class="form-control-plaintext font-weight-bold">Надана відповідь: @question.ActualAnswer</p>
+            </div>
+            id++;
+        }
+    </div>
+   
+
 </div>

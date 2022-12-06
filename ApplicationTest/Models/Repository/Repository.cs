@@ -7,18 +7,18 @@ namespace ApplicationTest.Models.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly Dictionary<string, List<T>> items;
+        private readonly Dictionary<int, List<T>> items;
         public Repository()
         {
-            items = new Dictionary<string, List<T>>();
+            items = new Dictionary<int, List<T>>();
         }
 
-        public void Add(string category, T item)
+        public void Add(int category, T item)
         {
             items[category].Add(item);
         }
 
-        public void AddRange(string category, IEnumerable<T> range)
+        public void AddRange(int category, IEnumerable<T> range)
         {
             items.Add(category, range.ToList());
             /*var enumerable = items[category];
@@ -32,12 +32,12 @@ namespace ApplicationTest.Models.Repository
             }*/
         }
 
-        public IEnumerable<T> GetAllByCategory(string category)
+        public IEnumerable<T> GetAllByCategory(int category)
         {
             return items[category];
         }
 
-        
+
     }
 
 }
