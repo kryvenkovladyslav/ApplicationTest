@@ -8,6 +8,8 @@ namespace ApplicationTest.Models.Repository
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly Dictionary<int, List<T>> items;
+        public Dictionary<int, List<T>> Items => items;
+
         public Repository()
         {
             items = new Dictionary<int, List<T>>();
@@ -21,23 +23,11 @@ namespace ApplicationTest.Models.Repository
         public void AddRange(int category, IEnumerable<T> range)
         {
             items.Add(category, range.ToList());
-            /*var enumerable = items[category];
-
-            foreach (var item in range)
-            {
-                if (!enumerable.Contains(item))
-                {
-                    enumerable.Add(item);
-                }
-            }*/
         }
 
         public IEnumerable<T> GetAllByCategory(int category)
         {
             return items[category];
         }
-
-
     }
-
 }

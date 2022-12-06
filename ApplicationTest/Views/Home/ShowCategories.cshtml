@@ -1,1 +1,25 @@
-﻿
+﻿@model Dictionary<int, List<Test>> 
+<div>
+    <div>
+        <h1>Категорії тестів</h1>
+        <hr />
+    </div>
+    <div>
+        @foreach (var category in Model.Keys)
+        {
+            <h2>@Domain.Dictionary[category]</h2>
+            <ul>
+                @foreach (var test in Model[category])
+                {
+                    <li><a 
+                           asp-action="ShowTestPage" 
+                           asp-controller="Home" 
+                           asp-route-category="@category"
+                           asp-route-name="@test.Name">
+                        @test.Name</a></li>
+                }
+            </ul>
+        }
+    </div>
+
+</div>

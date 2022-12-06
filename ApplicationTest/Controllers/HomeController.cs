@@ -13,41 +13,31 @@ namespace ApplicationTest.Controllers
         private readonly ILogger<HomeController> logger;
         private readonly IRepository<Test> repository;
 
-
         public HomeController(IRepository<Test> repository, ILogger<HomeController> logger)
         {
             (this.repository, this.logger) = (repository, logger);
             SeedData();
         }
 
-        [HttpPost]
-        public IActionResult ShowResultPage(Test test)
-        {
-            return View(test);
-        
-        }
-        [HttpPost]
-        public IActionResult ShowQuestionPage(Question question)
-        {
-            return View(question);
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-        public IActionResult ShowTestPage(string name)
+        public IActionResult Index() => View();
+        public IActionResult Privacy() => View();
+        public IActionResult ShowCategories() => View(((Repository<Test>)repository).Items);
+        public IActionResult ShowTestPage(int category, string name)
         {
             return View(repository
                 .GetAllByCategory(((int)Domain.Categories.math))
-                .Where(test => test.Name == "math_2019")
+                .Where(test => test.Name == "Математика тест 2019")
                 .First());
         }
+
+
+        [HttpPost]
+        public IActionResult ShowResultPage(Test test) => View(test);
+        [HttpPost]
+        public IActionResult ShowQuestionPage(Question question) => View(question);
+
+       
+      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -61,7 +51,7 @@ namespace ApplicationTest.Controllers
                 new Test
                 {
                     Category = Domain.Categories.math,
-                    Name = "math_2019",
+                    Name = "Математика тест 2019",
                     Count = 20,
                     Questions = new List<Question>
                     {
