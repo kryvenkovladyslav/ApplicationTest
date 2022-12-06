@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body class="bg-light">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -34,9 +34,23 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top mt-md-5">
         <div class="container">
-            &copy; 2022 - Тести онлайн - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="mt-2">
+                <div>
+                    <h5>Ми у соцмережах</h5>
+                    <a href="https://www.instagram.com/vladyslavkryvenko/" target="_blank">
+                        <img width="30" height="30" src="~/images/home/instagram-footer.png" alt="instagram-image"/>
+                    </a>
+                    <a href="https://t.me/kryvenkovladyslav" target="_blank">
+                        <img width="30" height="30" src="~/images/home/telegram-footer.png"/>
+                    </a>
+                </div>
+                <div class="mt-2">
+                    <h5>09550251719</h5>
+                    <p>Viber | Telegram</p>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

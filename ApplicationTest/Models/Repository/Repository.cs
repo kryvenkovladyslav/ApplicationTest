@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ApplicationTest.Models.Repository
 {
@@ -10,24 +8,32 @@ namespace ApplicationTest.Models.Repository
         private readonly Dictionary<int, List<T>> items;
         public Dictionary<int, List<T>> Items => items;
 
-        public Repository()
-        {
+        public Repository() =>
             items = new Dictionary<int, List<T>>();
-        }
 
-        public void Add(int category, T item)
-        {
+        public IEnumerable<T> GetAllByCategory(int category) =>
+           items[category];
+
+        public void AddObject(int category, T item) =>
             items[category].Add(item);
-        }
 
         public void AddRange(int category, IEnumerable<T> range)
         {
-            items.Add(category, range.ToList());
+            var list = items[category];
+
+            foreach (var item in range)
+            {
+                list.Add(item);
+            }
         }
 
-        public IEnumerable<T> GetAllByCategory(int category)
-        {
-            return items[category];
+        public void Create(int category, T item) {
+            var list = new List<T>();
+            list.Add(item);
+            items.Add(category, list);
         }
+
+        public void CreateRange(int category, IEnumerable<T> range) =>
+            items.Add(category, range.ToList()); 
     }
 }

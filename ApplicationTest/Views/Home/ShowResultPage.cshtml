@@ -7,7 +7,7 @@
         return question.Result ? "btn-success" : "btn-danger";
     }
 }
-<div class="bg-light m-3">
+<div class="m-3">
     <div>
         <h1>Результати</h1>
         <p>Ви завершиили тестування.</p>
@@ -29,12 +29,15 @@
             <div id="@id" class="form-group">
                 <h2>@question.Text</h2>
                 <img src="~/images/@question.ImagePath" class="form-control-file" />
-                <p class="@GetColor(question) form-control-plaintext font-weight-bold">Очікувана відповідь: @Domain.AnswerTranslater[question.ExpectedAnswer.ToString()]</p>
-                <p class="@GetColor(question) form-control-plaintext font-weight-bold">Надана відповідь: @Domain.AnswerTranslater[question.ActualAnswer.ToString()]</p>
+                <p class="@GetColor(question) form-control font-weight-bold">Очікувана відповідь: @Domain.AnswerTranslater[question.ExpectedAnswer.ToString()]</p>
+                <p class="@GetColor(question) form-control font-weight-bold">Надана відповідь: @Domain.AnswerTranslater[question.ActualAnswer.ToString()]</p>
             </div>
             id++;
         }
     </div>
-   
-
+    
+    <div>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-sm btn-outline-primary m-2">На головну</a>
+        <a asp-action="ShowCategories" asp-controller="Home" class="btn btn-sm btn-outline-primary m-2">До категорiй</a>
+    </div>
 </div>

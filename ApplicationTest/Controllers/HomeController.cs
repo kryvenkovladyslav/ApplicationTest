@@ -20,7 +20,6 @@ namespace ApplicationTest.Controllers
         }
 
         public IActionResult Index() => View();
-        public IActionResult Privacy() => View();
         public IActionResult ShowCategories() => View(((Repository<Test>)repository).Items);
         public IActionResult ShowTestPage(int category, string name)
         {
@@ -35,15 +34,11 @@ namespace ApplicationTest.Controllers
         public IActionResult ShowResultPage(Test test) => View(test);
         [HttpPost]
         public IActionResult ShowQuestionPage(Question question) => View(question);
-
-       
-      
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        public IActionResult Error() => 
+            View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        
+
         private void SeedData()
         {
             var mathTests = new Test[]
@@ -178,8 +173,8 @@ namespace ApplicationTest.Controllers
                 }
             };
 
-            repository.AddRange(((int)Domain.Categories.math), mathTests);
-            repository.AddRange(((int)Domain.Categories.physics), physicsTest);
+            repository.CreateRange(((int)Domain.Categories.math), mathTests);
+            repository.CreateRange(((int)Domain.Categories.physics), physicsTest);
         }
     }
 }
